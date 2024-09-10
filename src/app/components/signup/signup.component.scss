@@ -1,0 +1,156 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper {
+    border: 1px solid gray;
+    box-sizing: border-box;
+    width: 700px;
+    padding: 20px;
+    background-color: white;
+}
+
+.signup-container {
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+.form-section {
+    width: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+h1 {
+    color: rgb(238, 185, 86);
+}
+
+h3 {
+    margin: 0;
+    padding-bottom: 20px;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.name-fields {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    
+    input {
+        width: 48%;
+        padding: 10px;
+        font-size: 16px;
+        box-sizing: border-box;
+        border: 1px solid #000;
+        border-radius: 4px;
+    }
+}
+
+.full-width {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    border-radius: 4px;
+}
+
+.password-fields {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    
+    input {
+        width: 48%;
+        padding: 10px;
+        font-size: 16px;
+        box-sizing: border-box;
+        border: 1px solid #000;
+        border-radius: 4px;
+    }
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.signin-instead {
+    font-size: 14px;
+    text-decoration: none;
+    color: blue;
+}
+
+.register {
+    background-color: rgb(63, 63, 223);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.image-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 700px;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.language-selector {
+    flex: 1;
+    
+    select {
+        padding: 5px;
+        border: 1px solid gray;
+        font-size: 14px;
+    }
+}
+
+.links {
+    flex: 1;
+    text-align: right;
+    
+    a {
+        margin-left: 15px;
+        color: rgb(2, 2, 8);
+        text-decoration: none;
+        font-size: 14px;
+    }
+}

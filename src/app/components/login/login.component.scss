@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    border: 1px solid gray;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 20px;
+    width: 350px;
+    height: auto;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: rgb(228, 168, 57);
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.forgot-password {
+    font-size: 12px;
+    color: black;
+    text-decoration: none;
+    margin-bottom: 20px;
+    text-align: left;
+    width: 100%;
+    display: block;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.create-account {
+    background-color: white;
+    border: none;
+    color: blue;
+}
+
+.login {
+    background-color: blue;
+    color: white;
+    border: none;
+}
+
+.footer {
+    position: absolute;
+    top: calc(50% + 230px);
+    left: 50%;
+    width: 350px;
+    transform: translate(-50%, 0);
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+    box-sizing: border-box;
+}
+
+.language-select select {
+    font-size: 10px;
+    padding: 5px;
+}
+
+.right-links {
+    a {
+        font-size: 12px;
+        margin-left: 10px;
+        color: #000;
+        text-decoration: none;
+    }
+}
