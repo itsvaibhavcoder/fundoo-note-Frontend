@@ -20,5 +20,17 @@ export class HttpService {
   postApiCall(endPoint:string, payload:any){
    return this.http.post(this.baseUrl+endPoint, payload)
   }
-  
+
+  deleteApiCall(endPoint:string){
+    return this.http.delete(this.baseUrl + endPoint,{
+      headers: this.authHeader
+    })
+  }
+
+  putApiCall(endPoint: string, payload: any) {
+    return this.http.put(this.baseUrl + endPoint, payload, {
+      headers: this.authHeader
+    });
+  }
+
 }
