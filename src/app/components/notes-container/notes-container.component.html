@@ -1,0 +1,5 @@
+<app-addnote></app-addnote>
+<div *ngFor="let noteObj of notesList">
+    <app-note-card [noteDetails]="noteObj"></app-note-card>
+</div>
+
