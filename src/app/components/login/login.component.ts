@@ -8,8 +8,8 @@ import { UserService } from 'src/services/user-service/user.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  email:string = "vaibhav";
-  password:string = "12345";
+  email:string = "rushikeshpalaskar467@gmail.com";
+  password:string = "Password@123";
   constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {}
