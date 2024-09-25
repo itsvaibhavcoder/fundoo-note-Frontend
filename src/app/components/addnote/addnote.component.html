@@ -1,11 +1,33 @@
-<div *ngIf="showTakeNote else addnote" (click)="toggleTakeNote()">
-    <span>take a note</span>
+<div class = "add-note" *ngIf="showTakeNote; else addnote" (click)="toggleTakeNote()">
+  <div class="main-cnt">
+    <div>
+      <span>Take a note</span>
+    </div>
+    <div class="icon-cnt">
+      <mat-icon
+        svgIcon="tick"
+        aria-hidden="false"
+        aria-label="tick"
+      ></mat-icon>
+      <mat-icon
+        svgIcon="brush"
+        aria-hidden="false"
+        aria-label="brush"
+      ></mat-icon>
+      <mat-icon
+        svgIcon="Image"
+        aria-hidden="false"
+        aria-label="Image"
+      ></mat-icon>
+    </div>
+  </div>
 </div>
 <ng-template #addnote>
-    <div>
-        <span>Title</span>
-        <span>description</span>
-        <button (click)="toggleTakeNote()">Close</button>
-    </div>
+  <!-- want to render note component  -->
+  <div>
+    <!-- <app-note-card></app-note-card> -->
+    <!-- <app-note-card></app-note-card> -->
+    <app-new-note></app-new-note>
+    <button (click)="toggleTakeNote()">Close</button>
+  </div>
 </ng-template>
-
