@@ -11,4 +11,24 @@ export class NotesService {
   getNotesApiCall(endPoint: string){
     return this.http.getApiCall(endPoint);
   }
+
+  createNoteApiCall(endPoint:string, noteData:any){
+    return this.http.postApiCall(endPoint, noteData);
+  }
+
+  deleteNoteById(endPoint: string, noteId: string) {
+    return this.http.deleteApiCall(`${endPoint}/${noteId}`);
+  }
+
+  updateNoteById(endPoint: string, noteId: string, updatedData: any) {
+    return this.http.putApiCall(`${endPoint}/${noteId}`, updatedData);
+  }
+
+  archiveNoteById(endPoint: string, noteId: string) {
+    return this.http.putApiCall(`${endPoint}/archive/${noteId}`, {});
+  }
+
+  trashNoteById(endPoint: string, noteId: string) {
+    return this.http.putApiCall(`${endPoint}/trash/${noteId}`, {});
+  }
 }
