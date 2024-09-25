@@ -1,10 +1,17 @@
 <div class="task-main-cnt">
     <!-- <span>Title</span>
     <span>Description</span> -->
-  <input type = "text" placeholder="Title"/>
+  <div class="title">
+    <input type = "text" placeholder="Title"/>
+    <mat-icon
+        svgIcon="pin-icon"
+        aria-hidden="false"
+        aria-label="pin icon"
+      ></mat-icon>
+  </div>
   <textarea placeholder="Add a note..."></textarea> 
     <div class="icons-cnt">
-      <mat-icon
+      <!-- <mat-icon
         svgIcon="reminder-icon"
         aria-hidden="false"
         aria-label="reminder icon"
@@ -33,7 +40,7 @@
         svgIcon="more-icon"
         aria-hidden="false"
         aria-label="more icon"
-      ></mat-icon>
+      ></mat-icon> -->
       <mat-icon
         svgIcon="undo-icon"
         aria-hidden="false"
@@ -44,6 +51,7 @@
         aria-hidden="false"
         aria-label="redo icon"
       ></mat-icon>
+      <button (click)="close()">Close</button>
     </div>
-  </div>
+</div>
   

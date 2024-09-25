@@ -21,5 +21,8 @@ export class NotesContainerComponent implements OnInit {
       }
     })
   }
-
+  handleUpdateNotesList($event:{action:string, data:any}){
+    console.log($event);
+    this.notesList = [$event, ...this.notesList];
+  }
 }

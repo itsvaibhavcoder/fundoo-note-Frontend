@@ -12,6 +12,10 @@
   display: flex;
   align-items: center;
 
+  .googleKeep{
+    height: 40px;
+    padding-left: 10px;
+  }
   h3 {
     margin-top: 15px;
     margin-left: 10px;
@@ -19,6 +23,11 @@
     font-weight: 400;
     color: #5f6368;
   }
+  h3:hover{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
 }
 
 .mid-cnt {
@@ -26,7 +35,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  
+  input{
+    border: none;
+    width: 70%;
+    height: 22px;
+    background-color: #f2f4f8;
+    border-radius: 5px;
+    padding: 5px;
+  }
+  input:active{
+    background-color: white;
+  }
   mat-icon {
     cursor: pointer;
     padding: 8px;
@@ -42,13 +62,21 @@
 .right-cnt {
   display: flex;
   align-items: center;
-
+  
+  .user{
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+  }
+  .googleapp{
+    width: 30px;
+    height: 30px;
+  }
   mat-icon {
     cursor: pointer;
     padding: 8px;
     border-radius: 50%;
     transition: background-color 0.2s ease-in-out;
-
     &:hover {
       background-color: rgba(60, 64, 67, 0.1);
     }

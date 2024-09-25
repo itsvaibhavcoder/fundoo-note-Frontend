@@ -13,7 +13,7 @@ export class NotesService {
   }
 
   createNoteApiCall(endPoint:string, noteData:any){
-    return this.http.postApiCall(endPoint, noteData);
+    return this.http.postApiCall(endPoint, noteData, true);
   }
 
   deleteNoteById(endPoint: string, noteId: string) {
