@@ -18,7 +18,8 @@ import { ArchieveContainerComponent } from './components/archieve-container/arch
 import { TrashContainerComponent } from './components/trash-container/trash-container.component';
 import { DashboardContainerComponent } from './components/dashboard-container/dashboard-container.component';
 import { AddnoteComponent } from '../app/components/addnote/addnote.component';
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { NewNoteComponent } from './components/new-note/new-note.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { AddnoteComponent } from '../app/components/addnote/addnote.component';
     ArchieveContainerComponent,
     TrashContainerComponent,
     DashboardContainerComponent,
-    AddnoteComponent
+    AddnoteComponent,
+    NewNoteComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { AddnoteComponent } from '../app/components/addnote/addnote.component';
     MatInputModule,
     HttpClientModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
