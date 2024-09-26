@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ARCHIVE_ICON, COLLABRATOR_ICON, COLOR_PALATTE_ICON, DELETE_FOREVER_ICON, IMG_ICON, MORE_ICON, REMINDER_ICON, RESTORE_ICON, UNARCHIVE_ICON } from 'src/assets/svg-icons';
+import { ARCHIVE_ICON, COLLABRATOR_ICON, COLOR_PALATTE_ICON, DELETE_FOREVER_ICON, IMG_ICON, MORE_ICON, REMINDER_ICON, RESTORE_ICON, UNARCHIVE_ICON} from 'src/assets/svg-icons';
 
 @Component({
   selector: 'app-note-card',
@@ -9,7 +9,9 @@ import { ARCHIVE_ICON, COLLABRATOR_ICON, COLOR_PALATTE_ICON, DELETE_FOREVER_ICON
   styleUrls: ['./note-card.component.scss']
 })
 export class NoteCardComponent implements OnInit {
-  @Input() noteDetails: any = {}
+  @Input() noteDetails: any = {};
+  @Output() archiveNote: EventEmitter<any> = new EventEmitter();
+  @Output() deleteNote: EventEmitter<any> = new EventEmitter();
   constructor( iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIconLiteral('reminder-icon', sanitizer.bypassSecurityTrustHtml(REMINDER_ICON));
     iconRegistry.addSvgIconLiteral('collabrator-icon', sanitizer.bypassSecurityTrustHtml(COLLABRATOR_ICON));
@@ -23,6 +25,17 @@ export class NoteCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // console.log('Note Details:', this.noteDetails);
+  } 
+
+  //Emit the archive event to parent
+  onArchiveClick(){
+    this.archiveNote.emit(this.noteDetails._id);
+    console.log(this.noteDetails._id);
   }
 
+  //Emit the delete event to parent
+  onDeleteClick(){
+    this.deleteNote.emit(this.noteDetails._id);
+  }
 }
