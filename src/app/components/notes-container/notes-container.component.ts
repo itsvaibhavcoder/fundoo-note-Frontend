@@ -7,22 +7,59 @@ import { NotesService } from 'src/services/notes-service/notes.service';
   styleUrls: ['./notes-container.component.scss']
 })
 export class NotesContainerComponent implements OnInit {
-  notesList:any [] = []
+  notesList: any[] = [];
+  
   constructor(private notesService: NotesService) { }
 
   ngOnInit(): void {
+    this.loadNotes();
+  }
+
+  // Fetch all notes from the API (Backend)
+  loadNotes() {
     this.notesService.getNotesApiCall('notes').subscribe({
-      next:(res:any)=>{
-        console.log(res.data);
+      next: (res: any) => {
+        console.log(res.data[0]._id);
         this.notesList = res.data;
       },
-      error: (err)=>{
+      error: (err) => {
         console.log(err);
       }
-    })
+    });
   }
-  handleUpdateNotesList($event:{action:string, data:any}){
+
+  //Handle archiving a note
+  onArchiveNote(noteId: string) {
+    console.log(noteId);
+    this.notesService.archiveNoteById('notes', noteId).subscribe({
+      next: () => {
+        console.log('Note archived successfully');
+        this.notesList = this.notesList.filter(note => note.id !== noteId);  // Remove the note from UI
+      },
+      error: (err) => {
+        console.log('Error archiving note:', err);
+      }
+    });
+  }
+
+  // Handle deleting a note
+  onDeleteNote(noteId: string) {
+    this.notesService.deleteNoteById('notes', noteId).subscribe({
+      next: () => {
+        console.log('Note deleted successfully');
+        this.notesList = this.notesList.filter(note => note.id !== noteId);  // Remove the note from UI
+      },
+      error: (err) => {
+        console.log('Error deleting note:', err);
+      }
+    });
+  }
+
+  // Handle updates to the notes list (for adding new notes)
+  handleUpdateNotesList($event: { action: string, data: any }) {
     console.log($event);
-    this.notesList = [$event, ...this.notesList];
+    if ($event.action === 'add') {
+      this.notesList = [$event.data, ...this.notesList];
+    }
   }
 }
