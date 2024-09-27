@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/services/user-service/user.service';
 
@@ -8,19 +9,28 @@ import { UserService } from 'src/services/user-service/user.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  email:string = "rushikeshpalaskar467@gmail.com";
-  password:string = "Password@123";
-  constructor(private userService: UserService, private router: Router) {}
+  loginForm!:FormGroup
+  submitted: boolean=false
+  constructor(private userService: UserService, private router: Router, private formBuilder: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+}
+get loginControls(){
+  return this.loginForm.controls
+}
 
   handleLogin() {
-    console.log(this.email);
-    console.log(this.password);
-    this.userService
+    this.submitted = !this.submitted
+    const {email, password} = this.loginForm.value
+    if(this.loginForm.valid){
+       this.userService
       .loginSignUpApiCall('users/login', {
-        email: this.email,
-        password: this.password,
+      email: email,
+      password: password,
       })
       .subscribe({
         next: (res:any) => {
@@ -32,5 +42,6 @@ export class LoginComponent implements OnInit {
           console.log(err);
         },
       });
+    }
   }
 }
