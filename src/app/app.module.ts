@@ -9,7 +9,7 @@ import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import { NoteCardComponent } from './components/note-card/note-card.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -20,6 +20,8 @@ import { DashboardContainerComponent } from './components/dashboard-container/da
 import { AddnoteComponent } from '../app/components/addnote/addnote.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NewNoteComponent } from './components/new-note/new-note.component';
+import {MatMenuModule} from '@angular/material/menu';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +46,9 @@ import { NewNoteComponent } from './components/new-note/new-note.component';
     HttpClientModule,
     FormsModule,
     MatIconModule,
-    MatExpansionModule
+    MatExpansionModule,
+    ReactiveFormsModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
