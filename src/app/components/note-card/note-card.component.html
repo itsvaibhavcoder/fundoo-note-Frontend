@@ -27,18 +27,27 @@
       svgIcon="archive-icon"
       aria-hidden="false"
       aria-label="archive icon"
-      (click)="onArchiveClick()"
+      (click)="handleNotesIconsClick('archive')"
     ></mat-icon>
-    <mat-icon
+    <mat-icon [matMenuTriggerFor]="moreMenu"
       svgIcon="more-icon"
       aria-hidden="false"
       aria-label="more icon"
     ></mat-icon>
-    <mat-icon
-      svgIcon="delete-forever-icon"
-      aria-hidden="false"
-      aria-label="delete forever icon"
-      (click)="onDeleteClick()"
-    ></mat-icon>
+    
+    <mat-menu #moreMenu="matMenu">
+      <button mat-menu-item (click)="handleNotesIconsClick('trash')">
+    
+        <span>Trash</span>
+      </button>
+      <button mat-menu-item disabled>
+
+        <span>Check voice mail</span>
+      </button>
+      <button mat-menu-item>
+       
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
   </div>
 </div>
