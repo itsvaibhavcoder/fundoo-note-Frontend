@@ -10,8 +10,8 @@ import { ARCHIVE_ICON, COLLABRATOR_ICON, COLOR_PALATTE_ICON, DELETE_FOREVER_ICON
 })
 export class NoteCardComponent implements OnInit {
   @Input() noteDetails: any = {};
-  @Output() archiveNote: EventEmitter<any> = new EventEmitter();
-  @Output() deleteNote: EventEmitter<any> = new EventEmitter();
+  @Input() container : string ="notes";
+  @Output() updateList = new EventEmitter()
   constructor( iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIconLiteral('reminder-icon', sanitizer.bypassSecurityTrustHtml(REMINDER_ICON));
     iconRegistry.addSvgIconLiteral('collabrator-icon', sanitizer.bypassSecurityTrustHtml(COLLABRATOR_ICON));
@@ -28,14 +28,8 @@ export class NoteCardComponent implements OnInit {
     // console.log('Note Details:', this.noteDetails);
   } 
 
-  //Emit the archive event to parent
-  onArchiveClick(){
-    this.archiveNote.emit(this.noteDetails._id);
-    console.log(this.noteDetails._id);
-  }
-
-  //Emit the delete event to parent
-  onDeleteClick(){
-    this.deleteNote.emit(this.noteDetails._id);
+  handleNotesIconsClick(action:string){
+      //Add Api call
+      this.updateList.emit({action, data: this.noteDetails})
   }
 }
