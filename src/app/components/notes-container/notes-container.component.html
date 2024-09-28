@@ -1,5 +1,5 @@
 <app-addnote (updateList)="handleUpdateNotesList($event)"></app-addnote>
-<div *ngFor="let noteObj of notesList">
+<div *ngFor="let noteObj of notesList | search : searchQuery">
     <app-note-card [container]="'notes'" [noteDetails]="noteObj"
     (updateList)="handleUpdateNotesList($event)"
     ></app-note-card>

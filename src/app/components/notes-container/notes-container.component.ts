@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/services/data-service/data.service';
 import { NotesService } from 'src/services/notes-service/notes.service';
 
 @Component({
@@ -8,11 +9,16 @@ import { NotesService } from 'src/services/notes-service/notes.service';
 })
 export class NotesContainerComponent implements OnInit {
   notesList: any[] = [];
-  
-  constructor(private notesService: NotesService) { }
+  searchQuery: string = ""
+  constructor(private notesService: NotesService, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.loadNotes();
+    this.dataService.curSearchQuery.subscribe({
+      next: (data)=>{
+        this.searchQuery = data;
+      }
+    })
   }
 
   //Fetch all notes from the API (Backend)
@@ -28,34 +34,7 @@ export class NotesContainerComponent implements OnInit {
     });
   }
 
-  //Handle archiving a note
-  // onArchiveNote(noteId: string) {
-  //   console.log(noteId);
-  //   this.notesService.archiveNoteById('notes', noteId).subscribe({
-  //     next: () => {
-  //       console.log('Note archived successfully');
-  //       this.notesList = this.notesList.filter(note => note.id !== noteId);
-  //     },
-  //     error: (err) => {
-  //       console.log('Error archiving note:', err);
-  //     }
-  //   });
-  // }
-
-  //Handle deleting a note
-  // onDeleteNote(noteId: string) {
-  //   this.notesService.deleteNoteById('notes', noteId).subscribe({
-  //     next: () => {
-  //       console.log('Note deleted successfully');
-  //       this.notesList = this.notesList.filter(note => note.id !== noteId);
-  //     },
-  //     error: (err) => {
-  //       console.log('Error deleting note:', err);
-  //     }
-  //   });
-  // }
-
-  // Handle updates to the notes list (for adding new notes)
+  //Handle updates to the notes list (for adding new notes)
   handleUpdateNotesList($event: { action: string, data: any }) {
     console.log($event);
     if ($event.action === 'add') {

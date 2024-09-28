@@ -1,71 +1,60 @@
 <body>
-  <div class="wrapper">
+  <div class="signup-wrapper">
     <div class="signup-container">
       <div class="form-section">
-        <h1>Fundoo</h1>
-        <h3>Create Your Fundoo Account</h3>
+        <h1>Create Your Fundoo Account</h1>
 
-        <form class="signup-form">
+        <form [formGroup]="signUpForm"  class="signup-form" novalidate>
           <div class="name-fields">
-            <mat-form-field
-              appearance="outline"
-            >
-              <mat-label>First Name*</mat-label>
-              <input matInput  />
+            <mat-form-field appearance="outline" style="width: 45%;">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" />
+              <mat-error *ngIf="register && signUpControls['firstName']?.hasError('required')">
+                First name is required
+              </mat-error>
             </mat-form-field>
-            <mat-form-field appearance="outline" style="width: 45%">
-              <mat-label>Last Name*</mat-label>
-              <input matInput style="width: 100%" />
+
+            <mat-form-field appearance="outline" style="width: 45%;">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" />
+              <mat-error *ngIf="register && signUpControls['lastName']?.hasError('required')">
+                Last name is required
+              </mat-error>
             </mat-form-field>
           </div>
-          <mat-form-field
-            appearance="outline"
-            style="width: 100%; margin-top: 10px"
-          >
-            <mat-label>Username*</mat-label>
-            <input matInput style="width: 100%" />
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+            <mat-error *ngIf="register && signUpControls['email']?.hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="register && signUpControls['email']?.hasError('email')">
+              Incorrect Email Format
+            </mat-error>
           </mat-form-field>
+
           <div class="password-fields">
-            <mat-form-field
-              appearance="outline"
-              style="width: 45%; margin-right: 10px"
-            >
-              <mat-label>Password*</mat-label>
-              <input matInput style="width: 100%" type="password" />
+            <mat-form-field appearance="outline" style="width: 45%;">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password" type="password" />
+              <mat-error *ngIf="register && signUpControls['password']?.hasError('required')">
+                Password is required
+              </mat-error>
             </mat-form-field>
-            <mat-form-field appearance="outline" style="width: 45%">
-              <mat-label>Confirm*</mat-label>
-              <input matInput style="width: 100%" type="password" />
-            </mat-form-field>
-            
           </div>
 
           <div class="form-footer">
-            <button class="signin-instead" routerLink="/">Sign In Instead</button>
+            <a class="signin-instead" routerLink="/login">Sign In Instead</a>
             <button (click)="handleRegister()" class="register">Register</button>
           </div>
         </form>
       </div>
 
       <div class="image-section">
-        <img src="../../../assets//Google-Account.webp" alt="SignUp Image" />
-        <p>One account. All of Fundo working for you</p>
+        <img src="../../../assets/Google-Account.webp" alt="SignUp Image" />
+        <p>One account. All of Fundoo working for you</p>
       </div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <div class="language-selector">
-      <!-- <select name="language">
-                <option value="en">English(United States)</option>
-            </select> -->
-      <h5>English(United State)</h5>
-    </div>
-
-    <div class="links">
-      <a href="#">Help</a>
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
     </div>
   </div>
 </body>

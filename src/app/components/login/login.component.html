@@ -21,7 +21,7 @@
       />
     </mat-form-field>
     <mat-error *ngIf="submitted && loginControls['password']?.hasError('required')">Password required</mat-error>
-    <mat-error *ngIf="submitted && loginControls['password']?.hasError('email')">Incorrect Password</mat-error>
+    <mat-error *ngIf="submitted && loginControls['password']?.hasError('password')">Incorrect Password</mat-error>
     <a href="#" class="forgot-password">Forgot Password?</a>
 
     <div class="button-group">

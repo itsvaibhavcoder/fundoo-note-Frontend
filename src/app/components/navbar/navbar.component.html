@@ -9,7 +9,7 @@
       <h3>Keep</h3>
     </div>
     <div class="mid-cnt">
-      <input type="text" placeholder="Search">
+      <input type="text" placeholder="Search" [(ngModel)]="searchQuery" (input)="handleSearchQuery()">
         <mat-icon
         svgIcon="search-icon"
         aria-hidden="false"

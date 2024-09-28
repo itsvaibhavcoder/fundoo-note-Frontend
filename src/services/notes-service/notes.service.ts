@@ -8,6 +8,7 @@ import { HttpService } from '../http-service/http.service';
 export class NotesService {
 
   constructor(private http: HttpService) {}
+  
   getNotesApiCall(endPoint: string){
     return this.http.getApiCall(endPoint);
   }

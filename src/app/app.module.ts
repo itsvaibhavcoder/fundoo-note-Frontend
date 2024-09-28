@@ -21,6 +21,7 @@ import { AddnoteComponent } from '../app/components/addnote/addnote.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NewNoteComponent } from './components/new-note/new-note.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { SearchPipe } from './pipe/search.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatMenuModule} from '@angular/material/menu';
     TrashContainerComponent,
     DashboardContainerComponent,
     AddnoteComponent,
-    NewNoteComponent
+    NewNoteComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
