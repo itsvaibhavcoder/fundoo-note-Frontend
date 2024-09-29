@@ -27,10 +27,11 @@ export class NotesService {
 
   archiveNoteById(endPoint: string, noteId: string) {
     console.log(noteId);
-    return this.http.putApiCall(`${endPoint}/isArchive/${noteId}`, {});
+    return this.http.putApiCall(`${endPoint}/isArchive/${noteId}`, {isArchive: true });
   }
 
   trashNoteById(endPoint: string, noteId: string) {
-    return this.http.putApiCall(`${endPoint}/isTrash/${noteId}`, {});
+    console.log(noteId);
+    return this.http.putApiCall(`${endPoint}/isTrash/${noteId}`, {isTrash: true});
   }
 }
