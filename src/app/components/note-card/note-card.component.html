@@ -1,4 +1,4 @@
-<div class="task-main-cnt">
+<!-- <div class="task-main-cnt">
   <span>{{noteDetails.Title | uppercase}}</span>
   <span>{{noteDetails.Description}}</span>
   <div class="icons-cnt">
@@ -46,6 +46,97 @@
       </button>
       <button mat-menu-item>
        
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+  </div>
+</div> -->
+
+<div class="task-main-cnt">
+  <span>{{ noteDetails.Title | uppercase }}</span>
+  <span>{{ noteDetails.Description }}</span>
+  
+  <div class="icons-cnt">
+    <mat-icon
+      svgIcon="reminder-icon"
+      aria-hidden="false"
+      aria-label="reminder icon"
+      *ngIf="container === 'notes' || container === 'archive'"
+    ></mat-icon>
+
+    <mat-icon
+      svgIcon="collabrator-icon"
+      aria-hidden="false"
+      aria-label="collabrator icon"
+      *ngIf="container === 'notes' || container === 'archive'"
+    ></mat-icon>
+
+    <mat-icon
+      svgIcon="color-palatte-icon"
+      aria-hidden="false"
+      aria-label="color palatte icon"
+      *ngIf="container === 'notes' || container === 'archive'"
+    ></mat-icon>
+
+    <mat-icon
+      svgIcon="img-icon"
+      aria-hidden="false"
+      aria-label="image icon"
+      *ngIf="container === 'notes' || container === 'archive'"
+    ></mat-icon>
+
+    <!-- Archive / Unarchive Icons -->
+    <mat-icon
+      *ngIf="container === 'notes'"
+      svgIcon="archive-icon"
+      aria-hidden="false"
+      aria-label="archive icon"
+      (click)="handleNotesIconsClick('archive')"
+    ></mat-icon>
+
+    <mat-icon
+      *ngIf="container === 'archive'"
+      svgIcon="unarchive-icon"
+      aria-hidden="false"
+      aria-label="unarchive icon"
+      (click)="handleNotesIconsClick('unarchive')"
+    ></mat-icon>
+
+    <!-- More Icon for notes container -->
+    <mat-icon
+      *ngIf="container === 'notes'"
+      [matMenuTriggerFor]="moreMenu"
+      svgIcon="more-icon"
+      aria-hidden="false"
+      aria-label="more icon"
+    ></mat-icon>
+
+    <!-- Trash container specific icons -->
+    <mat-icon
+      *ngIf="container === 'trash'"
+      svgIcon="delete-forever-icon"
+      aria-hidden="false"
+      aria-label="delete forever icon"
+      (click)="handleNotesIconsClick('deleteForever')"
+    ></mat-icon>
+
+    <mat-icon
+      *ngIf="container === 'trash'"
+      svgIcon="restore-icon"
+      aria-hidden="false"
+      aria-label="restore icon"
+      (click)="handleNotesIconsClick('restore')"
+    ></mat-icon>
+
+    <!-- More menu for notes container -->
+    <mat-menu #moreMenu="matMenu">
+      <button mat-menu-item (click)="handleNotesIconsClick('trash')">
+        <span>Trash</span>
+      </button>
+      <button mat-menu-item disabled>
+        <span>Check voice mail</span>
+      </button>
+      <button mat-menu-item>
         <span>Disable alerts</span>
       </button>
     </mat-menu>
