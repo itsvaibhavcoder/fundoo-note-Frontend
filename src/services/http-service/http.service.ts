@@ -35,5 +35,4 @@ export class HttpService {
       headers: this.getHeader()
     });
   }
-
 }
