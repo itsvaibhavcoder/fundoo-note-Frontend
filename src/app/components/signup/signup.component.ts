@@ -29,6 +29,9 @@ export class SignupComponent implements OnInit {
 
   handleRegister() {
     this.register = true;
+    if (this.signUpForm.invalid) {
+      return;
+    }
     const { firstName, lastName, email, password } = this.signUpForm.value;
     this.userService.loginSignUpApiCall('users/signup', {
       firstName,
