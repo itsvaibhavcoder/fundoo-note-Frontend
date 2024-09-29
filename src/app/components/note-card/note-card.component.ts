@@ -31,7 +31,6 @@ export class NoteCardComponent implements OnInit {
 
 
   handleNotesIconsClick(action:string){
-      //Add Api call
       this.updateList.emit({action, data: this.noteDetails})
   }
 }
