@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { LIST_VIEW_ICON,BRUSH_ICON, TICK_ICON,ARCHIVE_ICON, COLLABRATOR_ICON, COLOR_PALATTE_ICON, DELETE_FOREVER_ICON, IMG_ICON, MORE_ICON, REMINDER_ICON, RESTORE_ICON, UNARCHIVE_ICON,UNDO_ICON,REDO_ICON, PIN_ICON} from 'src/assets/svg-icons';
+import { LIST_VIEW_ICON,BRUSH_ICON, TICK_ICON, IMG_ICON, UNDO_ICON,REDO_ICON, PIN_ICON} from 'src/assets/svg-icons';
 import { NotesService } from 'src/services/notes-service/notes.service';
 @Component({
   selector: 'app-addnote',
