@@ -18,10 +18,10 @@ export class TrashContainerComponent implements OnInit {
 
   // Fetch notes from the API
   loadNotes() {
-    this.noteService.getNotesApiCall('trash')
+    this.noteService.getNotesApiCall('notes')
       .subscribe({
         next: (res: any) => {
-          this.notesList = res.data;
+          this.notesList = res.data.filter((note:any)=>note.isTrash===true);
         },
         error: (err:any) => {
           console.log(err);
@@ -39,5 +39,4 @@ export class TrashContainerComponent implements OnInit {
       this.notesList = this.notesList.filter(note => note._id !== $event.data._id);
     }
   }
-
 }
