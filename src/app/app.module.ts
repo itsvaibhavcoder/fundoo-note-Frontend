@@ -23,6 +23,7 @@ import { NewNoteComponent } from './components/new-note/new-note.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { SearchPipe } from './pipe/search.pipe';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatExpansionModule,
     ReactiveFormsModule,
     MatMenuModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
