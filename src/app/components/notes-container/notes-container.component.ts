@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/internal/Subscription';
 import { DataService } from 'src/services/data-service/data.service';
 import { NotesService } from 'src/services/notes-service/notes.service';
 
@@ -7,9 +8,11 @@ import { NotesService } from 'src/services/notes-service/notes.service';
   templateUrl: './notes-container.component.html',
   styleUrls: ['./notes-container.component.scss'],
 })
-export class NotesContainerComponent implements OnInit {
+export class NotesContainerComponent implements OnInit, OnDestroy {
   notesList: any[] = [];
   searchQuery: string = '';
+  subscription!: Subscription;
+  
   constructor(
     private notesService: NotesService,
     private dataService: DataService
@@ -24,13 +27,13 @@ export class NotesContainerComponent implements OnInit {
     });
   }
 
-  //Fetch all notes from the API (Backend)
+  // Fetch all notes from the API (Backend)
   loadNotes() {
     this.notesService.getNotesApiCall('notes').subscribe({
       next: (res: any) => {
-        console.log(res.data[0]._id);
-        //this.notesList = res.data.filter((note: any) => !note.isArchive);
-        this.notesList = res.data.filter((note: any) => !note.isArchived && !note.isTrash);
+        this.notesList = res.data.filter(
+          (note: any) => !note.isArchive && !note.isTrash
+        );
       },
       error: (err) => {
         console.log(err);
@@ -38,38 +41,33 @@ export class NotesContainerComponent implements OnInit {
     });
   }
 
-  //Handle updates to the notes list (for adding new notes)
+  // Handle events coming from child components
   handleUpdateNotesList($event: { action: string; data: any }) {
-    console.log($event);
     if ($event.action === 'add') {
+      // Add a new note to the list
       this.notesList = [$event.data, ...this.notesList];
     } 
-    else if ($event.action === 'archive') {
-      this.notesService
-        .archiveNoteById('notes', $event.data._id)
-        .subscribe({
-          next: (res) => {
-            console.log('Archived successfully:', res);
-            this.notesList = this.notesList.filter((note) => note._id !== $event.data._id
-            );
-          },
-          error: (err) => {
-            console.log(err);
-          },
-        });
+    else if ($event.action === 'archive' || $event.action === 'trash') {
+      // Remove archived or trashed notes
+      this.notesList = this.notesList.filter(
+        (note) => note._id !== $event.data._id
+      );
     } 
-    else if ($event.action === 'trash') {
-      this.notesService.trashNoteById('notes', $event.data._id).subscribe({
-        next: (res) => {
-          console.log(res);
-          this.notesList = this.notesList.filter(
-            (note) => note._id !== $event.data._id
-          );
-        },
-        error: (err) => {
-          console.log('Error trashing note:', err);
-        },
-      });
+    else if ($event.action === 'colorChange') {
+      const updatedNote = this.notesList.find(
+        (note) => note._id === $event.data._id
+      );
+      if (updatedNote) {
+        updatedNote.color = $event.data.color; 
+        console.log('Updated note color:', updatedNote.color);
+      }
+    }
+  }
+
+  // Unsubscribe from subscriptions
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
   }
 }
