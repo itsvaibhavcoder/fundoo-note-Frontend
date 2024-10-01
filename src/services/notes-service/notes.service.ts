@@ -34,4 +34,9 @@ export class NotesService {
     console.log(noteId);
     return this.http.putApiCall(`${endPoint}/isTrash/${noteId}`, {isTrash: true});
   }
+
+  changeColorById(endPoint: string, noteId: string, color: string) {
+    console.log(noteId);
+    return this.http.putApiCall(`${endPoint}/color/${noteId}`, { color });
+  }
 }
