@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { LIST_VIEW_ICON,BRUSH_ICON, TICK_ICON, IMG_ICON, UNDO_ICON,REDO_ICON, PIN_ICON} from 'src/assets/svg-icons';
@@ -23,6 +24,7 @@ export class AddnoteComponent implements OnInit {
     iconRegistry.addSvgIconLiteral('redo-icon', sanitizer.bypassSecurityTrustHtml(REDO_ICON));
     iconRegistry.addSvgIconLiteral('pin-icon', sanitizer.bypassSecurityTrustHtml(PIN_ICON));
   }
+
  
   ngOnInit(): void {
   }
@@ -44,3 +46,5 @@ export class AddnoteComponent implements OnInit {
     console.log(this.description);
   }
 }
+
+//@Inject(MAT_DIALOG_DATA) public data: {addNoteState: boolean},
