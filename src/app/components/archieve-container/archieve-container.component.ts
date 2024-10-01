@@ -15,7 +15,6 @@ export class ArchieveContainerComponent implements OnInit {
     this.loadNotes();
   }
 
-  //Fetch notes from the API
   loadNotes() {
     this.noteService.getNotesApiCall('notes')
       .subscribe({
@@ -31,12 +30,8 @@ export class ArchieveContainerComponent implements OnInit {
   //Handle updates to the notes list (for adding, archiving, or trashing)
   handleUpdateNotesList($event: { action: string, data: any }) {
     console.log($event);
-    if ($event.action === 'add') {
-      this.notesList = [$event.data, ...this.notesList];
-    } 
-    else if ($event.action === 'archive' || $event.action === 'trash') {
+    if ($event.action === 'unarchive') {
       this.notesList = this.notesList.filter(note => note._id !== $event.data._id);
-    }
+    } 
   }
-
 }
