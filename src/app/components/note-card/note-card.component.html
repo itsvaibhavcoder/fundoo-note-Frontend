@@ -91,9 +91,9 @@
   </div>
 </div> -->
 
-<div class="task-main-cnt" [ngStyle]="{'background-color': noteDetails.color}">
-  <span>{{ noteDetails.Title | uppercase }}</span>
-  <span>{{ noteDetails.Description }}</span>
+<div class="task-main-cnt" [style.backgroundColor]="noteDetails.color">
+  <span (click)="handleEditNote()">{{ noteDetails.Title | uppercase }}</span>
+  <span (click)="handleEditNote()">{{ noteDetails.Description }}</span>
   
   <div class="icons-cnt">
     <!-- Reminder Icon -->
@@ -190,18 +190,18 @@
     <!-- Color Palette Menu -->
     <mat-menu #colorPalate="matMenu">
       <div class="color-palate-cnt">
-        <div class="col1" matTooltip="Default" (click)="handleNotesIconsClick('colorChange', '#FFFFFF')"></div>
-        <div class="col2" matTooltip="Coral" (click)="handleNotesIconsClick('colorChange', '#FAAFA8')"></div>
-        <div class="col3" matTooltip="Peach" (click)="handleNotesIconsClick('colorChange', '#F39F76')"></div>
-        <div class="col4" matTooltip="Sand" (click)="handleNotesIconsClick('colorChange', '#FFF8B8')"></div>
-        <div class="col5" matTooltip="Mint" (click)="handleNotesIconsClick('colorChange', '#E2F6D3')"></div>
-        <div class="col6" matTooltip="Sage" (click)="handleNotesIconsClick('colorChange', '#B4DDD3')"></div>
-        <div class="col7" matTooltip="Fog" (click)="handleNotesIconsClick('colorChange', '#D4E4ED')"></div>
-        <div class="col8" matTooltip="Storm" (click)="handleNotesIconsClick('colorChange', '#AECCDC')"></div>
-        <div class="col9" matTooltip="Dusk" (click)="handleNotesIconsClick('colorChange', '#D3BFDB')"></div>
-        <div class="col10" matTooltip="Blossom" (click)="handleNotesIconsClick('colorChange', '#F6E2DD')"></div>
-        <div class="col11" matTooltip="Clay" (click)="handleNotesIconsClick('colorChange', '#E9E3D4')"></div>
-        <div class="col12" matTooltip="Chalk" (click)="handleNotesIconsClick('colorChange', '#EFEFF1')"></div>
+        <div class="col1" matTooltip="Default" (click)="handleNotesIconsClick('color', '#FFFFFF')"></div>
+        <div class="col2" matTooltip="Coral" (click)="handleNotesIconsClick('color', '#FAAFA8')"></div>
+        <div class="col3" matTooltip="Peach" (click)="handleNotesIconsClick('color', '#F39F76')"></div>
+        <div class="col4" matTooltip="Sand" (click)="handleNotesIconsClick('color', '#FFF8B8')"></div>
+        <div class="col5" matTooltip="Mint" (click)="handleNotesIconsClick('color', '#E2F6D3')"></div>
+        <div class="col6" matTooltip="Sage" (click)="handleNotesIconsClick('color', '#B4DDD3')"></div>
+        <div class="col7" matTooltip="Fog" (click)="handleNotesIconsClick('color', '#D4E4ED')"></div>
+        <div class="col8" matTooltip="Storm" (click)="handleNotesIconsClick('color', '#AECCDC')"></div>
+        <div class="col9" matTooltip="Dusk" (click)="handleNotesIconsClick('color', '#D3BFDB')"></div>
+        <div class="col10" matTooltip="Blossom" (click)="handleNotesIconsClick('color', '#F6E2DD')"></div>
+        <div class="col11" matTooltip="Clay" (click)="handleNotesIconsClick('color', '#E9E3D4')"></div>
+        <div class="col12" matTooltip="Chalk" (click)="handleNotesIconsClick('color', '#EFEFF1')"></div>
       </div>
     </mat-menu>
   </div>
