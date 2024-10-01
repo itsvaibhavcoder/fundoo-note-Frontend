@@ -1,58 +1,4 @@
 <!-- <div class="task-main-cnt">
-  <span>{{noteDetails.Title | uppercase}}</span>
-  <span>{{noteDetails.Description}}</span>
-  <div class="icons-cnt">
-    <mat-icon
-      svgIcon="reminder-icon"
-      aria-hidden="false"
-      aria-label="reminder icon"
-    ></mat-icon>
-
-    <mat-icon
-      svgIcon="collabrator-icon"
-      aria-hidden="false"
-      aria-label="collabrator icon"
-    ></mat-icon>
-    <mat-icon
-      svgIcon="color-palatte-icon"
-      aria-hidden="false"
-      aria-label="color pallat icon"
-    ></mat-icon>
-    <mat-icon
-      svgIcon="img-icon"
-      aria-hidden="false"
-      aria-label="image icon"
-    ></mat-icon>
-    <mat-icon
-      svgIcon="archive-icon"
-      aria-hidden="false"
-      aria-label="archive icon"
-      (click)="handleNotesIconsClick('archive')"
-    ></mat-icon>
-    <mat-icon [matMenuTriggerFor]="moreMenu"
-      svgIcon="more-icon"
-      aria-hidden="false"
-      aria-label="more icon"
-    ></mat-icon>
-    
-    <mat-menu #moreMenu="matMenu">
-      <button mat-menu-item (click)="handleNotesIconsClick('trash')">
-    
-        <span>Trash</span>
-      </button>
-      <button mat-menu-item disabled>
-
-        <span>Check voice mail</span>
-      </button>
-      <button mat-menu-item>
-       
-        <span>Disable alerts</span>
-      </button>
-    </mat-menu>
-  </div>
-</div> -->
-
-<div class="task-main-cnt">
   <span>{{ noteDetails.Title | uppercase }}</span>
   <span>{{ noteDetails.Description }}</span>
   
@@ -76,6 +22,8 @@
       aria-hidden="false"
       aria-label="color palatte icon"
       *ngIf="container === 'notes' || container === 'archive'"
+
+      
     ></mat-icon>
 
     <mat-icon
@@ -85,7 +33,7 @@
       *ngIf="container === 'notes' || container === 'archive'"
     ></mat-icon>
 
-    <!-- Archive / Unarchive Icons -->
+    
     <mat-icon
       *ngIf="container === 'notes'"
       svgIcon="archive-icon"
@@ -102,7 +50,7 @@
       (click)="handleNotesIconsClick('unarchive')"
     ></mat-icon>
 
-    <!-- More Icon for notes container -->
+   
     <mat-icon
       *ngIf="container === 'notes'"
       [matMenuTriggerFor]="moreMenu"
@@ -111,7 +59,7 @@
       aria-label="more icon"
     ></mat-icon>
 
-    <!-- Trash container specific icons -->
+
     <mat-icon
       *ngIf="container === 'trash'"
       svgIcon="delete-forever-icon"
@@ -128,7 +76,7 @@
       (click)="handleNotesIconsClick('restore')"
     ></mat-icon>
 
-    <!-- More menu for notes container -->
+  
     <mat-menu #moreMenu="matMenu">
       <button mat-menu-item (click)="handleNotesIconsClick('trash')">
         <span>Trash</span>
@@ -139,6 +87,122 @@
       <button mat-menu-item>
         <span>Disable alerts</span>
       </button>
+    </mat-menu>
+  </div>
+</div> -->
+
+<div class="task-main-cnt" [ngStyle]="{'background-color': noteDetails.color}">
+  <span>{{ noteDetails.Title | uppercase }}</span>
+  <span>{{ noteDetails.Description }}</span>
+  
+  <div class="icons-cnt">
+    <!-- Reminder Icon -->
+    <mat-icon
+      svgIcon="reminder-icon"
+      aria-hidden="false"
+      aria-label="reminder icon"
+      *ngIf="container === 'notes' || container === 'archive'"
+    ></mat-icon>
+
+    <!-- Collaborator Icon -->
+    <mat-icon
+      svgIcon="collabrator-icon"
+      aria-hidden="false"
+      aria-label="collabrator icon"
+      *ngIf="container === 'notes' || container === 'archive'"
+    ></mat-icon>
+
+    <!-- Color Palette Icon with Menu Trigger -->
+    <mat-icon
+      svgIcon="color-palatte-icon"
+      aria-hidden="false"
+      aria-label="color palette icon"
+      *ngIf="container === 'notes' || container === 'archive'"
+      [matMenuTriggerFor]="colorPalate"
+    ></mat-icon>
+
+    <!-- Image Icon -->
+    <mat-icon
+      svgIcon="img-icon"
+      aria-hidden="false"
+      aria-label="image icon"
+      *ngIf="container === 'notes' || container === 'archive'"
+    ></mat-icon>
+
+    <!-- Archive Icon -->
+    <mat-icon
+      *ngIf="container === 'notes'"
+      svgIcon="archive-icon"
+      aria-hidden="false"
+      aria-label="archive icon"
+      (click)="handleNotesIconsClick('archive')"
+    ></mat-icon>
+
+    <!-- Unarchive Icon -->
+    <mat-icon
+      *ngIf="container === 'archive'"
+      svgIcon="unarchive-icon"
+      aria-hidden="false"
+      aria-label="unarchive icon"
+      (click)="handleNotesIconsClick('unarchive')"
+    ></mat-icon>
+
+    <!-- More Icon -->
+    <mat-icon
+      *ngIf="container === 'notes'"
+      [matMenuTriggerFor]="moreMenu"
+      svgIcon="more-icon"
+      aria-hidden="false"
+      aria-label="more icon"
+    ></mat-icon>
+
+    <!-- Delete Forever Icon (for Trash) -->
+    <mat-icon
+      *ngIf="container === 'trash'"
+      svgIcon="delete-forever-icon"
+      aria-hidden="false"
+      aria-label="delete forever icon"
+      (click)="handleNotesIconsClick('deleteForever')"
+    ></mat-icon>
+
+    <!-- Restore Icon (for Trash) -->
+    <mat-icon
+      *ngIf="container === 'trash'"
+      svgIcon="restore-icon"
+      aria-hidden="false"
+      aria-label="restore icon"
+      (click)="handleNotesIconsClick('restore')"
+    ></mat-icon>
+
+    <!-- More Menu -->
+    <mat-menu #moreMenu="matMenu">
+      <button mat-menu-item (click)="handleNotesIconsClick('trash')">
+        <span>Trash</span>
+      </button>
+      <button mat-menu-item disabled>
+        <span>Check voice mail</span>
+      </button>
+      <button mat-menu-item>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+
+    <!-- Color Palette Menu -->
+    <mat-menu #colorPalate="matMenu">
+      <div class="color-palate-cnt">
+        <div class="col1" matTooltip="Default" (click)="handleNotesIconsClick('colorChange', '#FFFFFF')"></div>
+        <div class="col2" matTooltip="Coral" (click)="handleNotesIconsClick('colorChange', '#FAAFA8')"></div>
+        <div class="col3" matTooltip="Peach" (click)="handleNotesIconsClick('colorChange', '#F39F76')"></div>
+        <div class="col4" matTooltip="Sand" (click)="handleNotesIconsClick('colorChange', '#FFF8B8')"></div>
+        <div class="col5" matTooltip="Mint" (click)="handleNotesIconsClick('colorChange', '#E2F6D3')"></div>
+        <div class="col6" matTooltip="Sage" (click)="handleNotesIconsClick('colorChange', '#B4DDD3')"></div>
+        <div class="col7" matTooltip="Fog" (click)="handleNotesIconsClick('colorChange', '#D4E4ED')"></div>
+        <div class="col8" matTooltip="Storm" (click)="handleNotesIconsClick('colorChange', '#AECCDC')"></div>
+        <div class="col9" matTooltip="Dusk" (click)="handleNotesIconsClick('colorChange', '#D3BFDB')"></div>
+        <div class="col10" matTooltip="Blossom" (click)="handleNotesIconsClick('colorChange', '#F6E2DD')"></div>
+        <div class="col11" matTooltip="Clay" (click)="handleNotesIconsClick('colorChange', '#E9E3D4')"></div>
+        <div class="col12" matTooltip="Chalk" (click)="handleNotesIconsClick('colorChange', '#EFEFF1')"></div>
+      </div>
     </mat-menu>
   </div>
 </div>
