@@ -49,8 +49,7 @@
       (mouseenter)="showProfile = true"
       (mouseleave)="showProfile = false"
     >
-      <img class="user" src="../../../assets/user.png" alt="user" />
-
+      <div class="user-initial">{{ userName[0] | uppercase }}</div>
       <div class="profile-dropdown" *ngIf="showProfile">
         <p>Google Account</p>
         <p>{{ userName }}</p>
