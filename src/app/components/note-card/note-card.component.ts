@@ -2,16 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import {
-  ARCHIVE_ICON,
-  COLLABRATOR_ICON,
-  COLOR_PALATTE_ICON,
-  DELETE_FOREVER_ICON,
-  IMG_ICON,
-  MORE_ICON,
-  REMINDER_ICON,
-  RESTORE_ICON,
-  UNARCHIVE_ICON,
+import {ARCHIVE_ICON,COLLABRATOR_ICON,COLOR_PALATTE_ICON,DELETE_FOREVER_ICON,IMG_ICON,MORE_ICON,REMINDER_ICON,RESTORE_ICON,UNARCHIVE_ICON
 } from 'src/assets/svg-icons';
 import { NotesService } from 'src/services/notes-service/notes.service';
 import { AddnoteComponent } from '../addnote/addnote.component';
