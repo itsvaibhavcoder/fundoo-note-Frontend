@@ -28,6 +28,16 @@
     text-decoration: underline;
     cursor: pointer;
   }
+  mat-icon {
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color: rgba(60, 64, 67, 0.1);
+    }
+  }
   
 }
 
@@ -72,6 +82,12 @@
   .googleapp{
     width: 30px;
     height: 30px;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease-in-out;
+    &:hover {
+      background-color: rgba(60, 64, 67, 0.1);
+    }
   }
   mat-icon {
     cursor: pointer;
@@ -105,6 +121,11 @@
     padding: 10px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Centers the content horizontally */
+    text-align: center;  /* Centers the text inside the dropdown */
   }
   
   .profile-dropdown p {
@@ -125,3 +146,17 @@
   }
 }
 
+.user-initial {
+  width: 40px;
+  height: 40px;
+  background-color: rgb(101, 101, 226); 
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 5px;
+}
