@@ -124,10 +124,16 @@ export class NoteCardComponent implements OnInit {
     this.updateList.emit({ action, data: this.noteDetails });
   }
   handleEditNote() {
-    this.dialog.open(AddnoteComponent, {
+    const dialogRef= this.dialog.open(AddnoteComponent, {
       data: {
-        addNoteState: false,
+       noteDetails: this.noteDetails
       },
     });
+    dialogRef.afterClosed().subscribe({
+      next:(res)=>{
+        console.log(res);
+        this.updateList.emit({ action:'edit', data: res });
+      }
+    })
   }
 }

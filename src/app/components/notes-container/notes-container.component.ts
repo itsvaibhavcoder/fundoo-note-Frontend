@@ -53,14 +53,7 @@ export class NotesContainerComponent implements OnInit, OnDestroy {
         (note) => note._id !== $event.data._id
       );
     } 
-    else if ($event.action === 'color') {
-      // const updatedNote = this.notesList.find(
-      //   (note) => note._id === $event.data._id
-      // );
-      // if (updatedNote) {
-      //   updatedNote.color = $event.data.color; 
-      //   console.log('Updated note color:', updatedNote.color);
-      // }
+    else if ($event.action === 'color' || $event.action === 'edit') {
       this.notesList = this.notesList.map(
         (note) => {
           if(note._id === $event.data._id){

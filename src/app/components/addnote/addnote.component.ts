@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Optional, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -12,10 +12,11 @@ import { NotesService } from 'src/services/notes-service/notes.service';
 export class AddnoteComponent implements OnInit {
   title:string = "";
   description:string = "";
+  color:string = "#ffffff";
   showTakeNote: boolean = true;
   isExpanded: boolean = true;
   @Output() updateList= new EventEmitter();
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private noteService: NotesService) {
+  constructor(@Optional() public dialogRef: MatDialogRef<AddnoteComponent>, @Optional() @Inject(MAT_DIALOG_DATA) public data: {noteDetails:any},iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private noteService: NotesService) {
     iconRegistry.addSvgIconLiteral('list-view', sanitizer.bypassSecurityTrustHtml(LIST_VIEW_ICON));
     iconRegistry.addSvgIconLiteral('brush', sanitizer.bypassSecurityTrustHtml(BRUSH_ICON));
     iconRegistry.addSvgIconLiteral('Image', sanitizer.bypassSecurityTrustHtml(IMG_ICON));
@@ -23,6 +24,13 @@ export class AddnoteComponent implements OnInit {
     iconRegistry.addSvgIconLiteral('undo-icon', sanitizer.bypassSecurityTrustHtml(UNDO_ICON));
     iconRegistry.addSvgIconLiteral('redo-icon', sanitizer.bypassSecurityTrustHtml(REDO_ICON));
     iconRegistry.addSvgIconLiteral('pin-icon', sanitizer.bypassSecurityTrustHtml(PIN_ICON));
+    console.log(data);
+    if(data){
+      this.showTakeNote = false;
+      this.title = data.noteDetails.Title,
+      this.description = data.noteDetails.Description,
+      this.color = data.noteDetails.color
+    }
   }
 
  
@@ -30,7 +38,16 @@ export class AddnoteComponent implements OnInit {
   }
   toggleTakeNote(addNote:boolean=false){
     this.showTakeNote = !this.showTakeNote;
-    if(addNote){
+    if(addNote && this.data){
+          this.dialogRef.close({
+            ...this.data.noteDetails,
+            Title: this.title,
+            Description: this.description,
+            //color: this.color
+          })
+    }
+    //change here 
+    if(addNote && !this.data){
       this.noteService.createNoteApiCall("notes",{Title: this.title, Description:this.description}).subscribe({
         next:(data:any)=>{
           this.updateList.emit({action:"add", data:data?.data})

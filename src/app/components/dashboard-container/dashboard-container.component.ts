@@ -10,6 +10,8 @@ import { ARCHIVE_ICON, REMINDER_ICON,  EDIT_ICON,TRASH_ICON, BULB_ICON} from 'sr
 })
 export class DashboardContainerComponent implements OnInit {
   @ViewChild('drawer')drawer!: MatDrawer;
+ 
+  drawerOpened: boolean = true;
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIconLiteral('reminder-icon', sanitizer.bypassSecurityTrustHtml(REMINDER_ICON));
     iconRegistry.addSvgIconLiteral('archive-icon', sanitizer.bypassSecurityTrustHtml(ARCHIVE_ICON));
@@ -21,6 +23,7 @@ export class DashboardContainerComponent implements OnInit {
   ngOnInit(): void {
   }
   toggleDrawer() {
-    this.drawer.toggle();
+    //this.drawer.toggle();
+    this.drawerOpened = !this.drawerOpened;
   }
 }

@@ -23,9 +23,9 @@
   </div>
 </div>
 <ng-template #addnote>
-    <div class="task-main-cnt">
+    <div class="task-main-cnt" [style.backgroundColor]="color">
       <div class="title">
-        <input [(ngModel)]="title" type = "text" placeholder="Title"/>
+        <input [style.backgroundColor]="color" [(ngModel)]="title" type = "text" placeholder="Title"/>
         <mat-icon
             svgIcon="pin-icon"
             aria-hidden="false"
