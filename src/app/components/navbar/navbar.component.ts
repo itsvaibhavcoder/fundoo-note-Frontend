@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   showProfile: boolean = false;
   userName: string = localStorage.getItem('name') || ''
   userEmail: string = localStorage.getItem('email') || '';
-
+  
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private dataService: DataService, private router: Router) {
     iconRegistry.addSvgIconLiteral('main-menu', sanitizer.bypassSecurityTrustHtml(MENU_ICON));
     iconRegistry.addSvgIconLiteral('search-icon', sanitizer.bypassSecurityTrustHtml(SEARCH_ICON));
