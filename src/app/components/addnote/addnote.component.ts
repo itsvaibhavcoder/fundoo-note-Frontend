@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, OnInit, Optional, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Optional, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -10,12 +10,14 @@ import { NotesService } from 'src/services/notes-service/notes.service';
   styleUrls: ['./addnote.component.scss']
 })
 export class AddnoteComponent implements OnInit {
+  @Input() noteDetails: any = {};
+  @Output() updateList= new EventEmitter();
   title:string = "";
   description:string = "";
   color:string = "#ffffff";
+  id:string = "";
   showTakeNote: boolean = true;
   isExpanded: boolean = true;
-  @Output() updateList= new EventEmitter();
   constructor(@Optional() public dialogRef: MatDialogRef<AddnoteComponent>, @Optional() @Inject(MAT_DIALOG_DATA) public data: {noteDetails:any},iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private noteService: NotesService) {
     iconRegistry.addSvgIconLiteral('list-view', sanitizer.bypassSecurityTrustHtml(LIST_VIEW_ICON));
     iconRegistry.addSvgIconLiteral('brush', sanitizer.bypassSecurityTrustHtml(BRUSH_ICON));
@@ -36,6 +38,23 @@ export class AddnoteComponent implements OnInit {
  
   ngOnInit(): void {
   }
+  handleNotesIconsClick(action: string, color: string= '#ffffff'){
+    if(action==='color'){
+      console.log(this.noteDetails)
+      this.noteDetails.color = color;
+      
+      this.noteService.changeColorById('notes', this.noteDetails._id, color).subscribe({
+        next:(res)=>{
+          console.log('Color updated', res);
+        },
+        error: (err)=>{
+          console.log('Error in updating color', err)
+        }
+      })
+    }
+    
+  }
+
   toggleTakeNote(addNote:boolean=false){
     this.showTakeNote = !this.showTakeNote;
     if(addNote && this.data){
@@ -64,4 +83,5 @@ export class AddnoteComponent implements OnInit {
   }
 }
 
-//@Inject(MAT_DIALOG_DATA) public data: {addNoteState: boolean},
+
+
