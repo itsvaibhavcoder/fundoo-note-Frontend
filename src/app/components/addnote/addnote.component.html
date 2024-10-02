@@ -48,6 +48,7 @@
             svgIcon="color-palatte-icon"
             aria-hidden="false"
             aria-label="color pallat icon"
+            [matMenuTriggerFor]="colorPalate"
           ></mat-icon>
           <mat-icon
             svgIcon="img-icon"
@@ -74,6 +75,14 @@
             aria-hidden="false"
             aria-label="redo icon"
           ></mat-icon>
+          <mat-menu #colorPalate="matMenu">
+            <div class="color-palate-cnt">
+              <div class="col1" matTooltip="Default" (click)="handleNotesIconsClick('color', '#FFFFFF')"></div>
+              <div class="col2" matTooltip="Coral" (click)="handleNotesIconsClick('color', '#FAAFA8')"></div>
+              <div class="col3" matTooltip="Blue" (click)="handleNotesIconsClick('color', '#AECBFA')"></div>
+              <!-- Add more colors as needed -->
+            </div>
+          </mat-menu>
           <button (click)="toggleTakeNote(true)">Close</button>
         </div>
     </div>
