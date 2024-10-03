@@ -1,12 +1,16 @@
+body{
+  box-sizing: border-box;
+}
 .navbar-main-cnt {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
-  height: 64px;
+  height: 59px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   padding: 0 20px;
   border: 1px solid gray;
+  width: calc(100vw - 40px);
 }
 
 .left-cnt {
@@ -46,11 +50,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  background-color: #f2f4f8;
+  margin-left: 23px;
+  border-radius: 12px;
   input{
-    border: none;
-    width: 70%;
-    height: 22px;
+    border: 1px solid #f2f4f8;
+    width: 80%;
+    height: 20px;
     background-color: #f2f4f8;
     border-radius: 5px;
     padding: 5px;
@@ -92,6 +98,7 @@
   mat-icon {
     cursor: pointer;
     padding: 8px;
+    height: 23px;
     border-radius: 50%;
     transition: background-color 0.2s ease-in-out;
     &:hover {
@@ -147,8 +154,8 @@
 }
 
 .user-initial {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   background-color: rgb(101, 101, 226); 
   color: white;
   border-radius: 50%;
