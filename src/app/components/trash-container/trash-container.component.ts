@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { DataService } from 'src/services/data-service/data.service';
 import { NotesService } from 'src/services/notes-service/notes.service';
 
 @Component({
@@ -6,14 +8,20 @@ import { NotesService } from 'src/services/notes-service/notes.service';
   templateUrl: './trash-container.component.html',
   styleUrls: ['./trash-container.component.scss']
 })
-export class TrashContainerComponent implements OnInit {
+export class TrashContainerComponent implements OnInit, OnDestroy {
 
   notesList: any[] = [];
-
-  constructor(private noteService: NotesService) { }
+  searchQuery: string = '';
+  subscription!: Subscription;
+  constructor(private noteService: NotesService, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.loadNotes();
+    this.dataService.curSearchQuery.subscribe({
+      next: (data) => {
+        this.searchQuery = data;
+      },
+    });
   }
 
   // Fetch notes from the API
@@ -35,6 +43,12 @@ export class TrashContainerComponent implements OnInit {
     }
     else if($event.action==='deleteForever'){
       this.notesList = this.notesList.filter(note=>note._id !== $event.data._id)
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
   }
 }
