@@ -91,7 +91,7 @@ export class NoteCardComponent implements OnInit {
         });
     } else if (action === 'trash' || action === 'restore') {
       this.notesService
-        .archiveNoteById('notes', this.noteDetails._id)
+        .trashNoteById('notes', this.noteDetails._id)
         .subscribe({
           next: (res) => {
             console.log('Archived successfully:', res);
@@ -100,7 +100,8 @@ export class NoteCardComponent implements OnInit {
             console.log('Error archiving note:', err);
           },
         });
-    } else if (action === 'deleteForever') {
+    } 
+    else if (action === 'deleteForever') {
       this.notesService
         .deleteNoteById('notes', this.noteDetails._id)
         .subscribe({
