@@ -32,18 +32,18 @@ export class AddnoteComponent implements OnInit {
       this.title = data.noteDetails.Title,
       this.description = data.noteDetails.Description,
       this.color = data.noteDetails.color
+      this.id = data.noteDetails._id
     }
   }
 
- 
   ngOnInit(): void {
   }
   handleNotesIconsClick(action: string, color: string= '#ffffff'){
     if(action==='color'){
-      console.log(this.noteDetails)
+      console.log(this.data.noteDetails)
       this.noteDetails.color = color;
       
-      this.noteService.changeColorById('notes', this.noteDetails._id, color).subscribe({
+      this.noteService.changeColorById('notes', this.id, color).subscribe({
         next:(res)=>{
           console.log('Color updated', res);
         },
