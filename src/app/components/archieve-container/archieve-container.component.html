@@ -1,4 +1,4 @@
-<div *ngFor="let noteObj of notesList">
+<div *ngFor="let noteObj of notesList | search : searchQuery">
     <app-note-card [container]="'archive'" [noteDetails]="noteObj"
     (updateList)="handleUpdateNotesList($event)"
     ></app-note-card>
