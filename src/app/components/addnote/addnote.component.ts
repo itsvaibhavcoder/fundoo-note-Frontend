@@ -43,7 +43,7 @@ export class AddnoteComponent implements OnInit {
       console.log(this.data.noteDetails)
       this.noteDetails.color = color;
       
-      this.noteService.changeColorById('notes', this.id, color).subscribe({
+      this.noteService.updateNoteById('notes', this.id, color).subscribe({
         next:(res)=>{
           console.log('Color updated', res);
         },
@@ -52,35 +52,35 @@ export class AddnoteComponent implements OnInit {
         }
       })
     }
-    
   }
-
-  toggleTakeNote(addNote:boolean=false){
+  
+  toggleTakeNote(addNote: boolean = false) {
     this.showTakeNote = !this.showTakeNote;
-    if(addNote && this.data){
-          this.dialogRef.close({
-            ...this.data.noteDetails,
-            Title: this.title,
-            Description: this.description,
-            //color: this.color
-          })
+    
+    if (addNote && this.data) {
+      this.dialogRef.close({
+        _id: this.data.noteDetails._id,
+        Title: this.title,
+        Description: this.description,
+        color: this.color 
+      });
     }
-    //change here 
-    if(addNote && !this.data){
-      this.noteService.createNoteApiCall("notes",{Title: this.title, Description:this.description}).subscribe({
-        next:(data:any)=>{
-          this.updateList.emit({action:"add", data:data?.data})
+  
+    if (addNote && !this.data) {
+      this.noteService.createNoteApiCall("notes", {
+        Title: this.title,
+        Description: this.description
+      }).subscribe({
+        next: (data: any) => {
+          this.updateList.emit({ action: "add", data: data?.data });
         },
-        error: (err)=>{
+        error: (err) => {
           console.log(err);
         }
-      })
+      });
     }
-    this.title = ""
-    this.description = ""
-    console.log(this.title);
-    console.log(this.description);
   }
+  
 }
 
 

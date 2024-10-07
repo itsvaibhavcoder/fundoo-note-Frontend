@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { DataService } from 'src/services/data-service/data.service';
 import { NotesService } from 'src/services/notes-service/notes.service';
@@ -15,7 +15,7 @@ export class NotesContainerComponent implements OnInit, OnDestroy {
   
   constructor(
     private notesService: NotesService,
-    private dataService: DataService
+    private dataService: DataService 
   ) {}
 
   ngOnInit(): void {

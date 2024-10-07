@@ -114,18 +114,39 @@ export class NoteCardComponent implements OnInit {
         });
     }
     this.updateList.emit({ action, data: this.noteDetails });
-  }
+  } 
   handleEditNote() {
-    const dialogRef= this.dialog.open(AddnoteComponent, {
+    const dialogRef = this.dialog.open(AddnoteComponent, {
       data: {
-       noteDetails: this.noteDetails
+        noteDetails: this.noteDetails
       },
     });
+  
     dialogRef.afterClosed().subscribe({
-      next:(res)=>{
-        console.log(res);
-        this.updateList.emit({ action:'edit', data: res });
+      next: (res) => {
+        if (res) {
+          if (res._id) {
+            const updatePayload = {
+              Title: res.Title,
+              Description: res.Description,
+              color: res.color  
+            };
+
+            this.notesService.updateNoteById('notes', res._id, updatePayload).subscribe({
+              next: (updatedNote) => {
+                console.log('Note updated:', updatedNote);
+                this.updateList.emit({ action: 'edit', data: updatedNote });
+              },
+              error: (err) => {
+                console.error('Error updating note:', err);
+              }
+            });
+          } 
+          else {
+            console.error('Error: Note ID is missing');
+          }
+        }
       }
-    })
+    });
   }
 }
