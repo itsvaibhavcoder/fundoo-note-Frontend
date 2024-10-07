@@ -1,10 +1,14 @@
 <div class="navbar-main-cnt">
   <div class="left-cnt">
-    <mat-icon (click)="onMenuIconClick()"
+    <mat-icon
+      (click)="onMenuIconClick()"
       svgIcon="main-menu"
       aria-hidden="false"
       aria-label="menu icon"
+      matTooltip="Menu"
+      matTooltipPosition="below"
     ></mat-icon>
+
     <img
       class="googleKeep"
       src="../../../assets/googleKeep.png"
@@ -24,6 +28,8 @@
       svgIcon="search-icon"
       aria-hidden="false"
       aria-label="search icon"
+      matTooltip="Search"
+      matTooltipPosition="below"
     ></mat-icon>
   </div>
 
@@ -32,18 +38,29 @@
       svgIcon="refresh-icon"
       aria-hidden="false"
       aria-label="refresh icon"
+      (click)="refreshPage()"
+      matTooltip="Refresh"
+      matTooltipPosition="below"
     ></mat-icon>
+
     <mat-icon
       svgIcon="list-view-icon"
       aria-hidden="false"
       aria-label="list view icon"
+      matTooltip="List View"
+      matTooltipPosition="below"
     ></mat-icon>
+
     <mat-icon
       svgIcon="setting-icon"
       aria-hidden="false"
       aria-label="settings icon"
+      matTooltip="Settings"
+      matTooltipPosition="below"
     ></mat-icon>
+
     <img class="googleapp" src="../../../assets/googlapp.png" alt="googleapp" />
+
     <div
       class="profile-container"
       (mouseenter)="showProfile = true"

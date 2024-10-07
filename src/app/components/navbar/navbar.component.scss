@@ -55,15 +55,14 @@ body{
   border-radius: 12px;
   input{
     border: 1px solid #f2f4f8;
-    width: 80%;
+    width: 83%;
     height: 20px;
     background-color: #f2f4f8;
     border-radius: 5px;
     padding: 5px;
+    outline: none;
   }
-  input:active{
-    background-color: white;
-  }
+
   mat-icon {
     cursor: pointer;
     padding: 8px;
@@ -116,7 +115,6 @@ body{
 
   .profile-container {
     z-index: 2;
-    // border-radius: 10px;
   }
   
   .profile-dropdown {
@@ -131,8 +129,8 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; /* Centers the content horizontally */
-    text-align: center;  /* Centers the text inside the dropdown */
+    align-items: center; 
+    text-align: center;  
   }
   
   .profile-dropdown p {

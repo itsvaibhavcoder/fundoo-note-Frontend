@@ -34,7 +34,9 @@ export class NavbarComponent implements OnInit {
   handleSearchQuery(){
     this.dataService.updateSearchQuery(this.searchQuery)
   }
-
+  refreshPage() {
+    window.location.reload(); 
+  }
   onMenuIconClick(){
     this.toggleDrawer.emit();
   }
