@@ -10,11 +10,16 @@ body {
   }
   
   .signup-wrapper {
-    border: 1px solid gray;
+    border: 1px solid transparent;
     box-sizing: border-box;
     width: 700px;
     padding: 20px;
     background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    &:hover {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
   }
   
   .signup-container {
@@ -70,21 +75,21 @@ body {
     width: 100%;
     padding-top: 20px;
   }
-  
-  .signin-instead {
-    font-size: 14px;
-    text-decoration: none;
-    color: blue;
-  }
-  
-  .register {
-    background-color: rgb(63, 63, 223);
-    color: white;
-    padding: 10px 20px;
+
+  button {
+    padding: 10px 16px;
+    width: 123px;
     border: none;
+    background-color: #007bff;
+    color: white;
     cursor: pointer;
-  }
-  
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
   .image-section {
     width: 50%;
     display: flex;

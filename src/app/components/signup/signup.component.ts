@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SnackbarService } from 'src/services/snackbar/snackbar.service';
 import { UserService } from 'src/services/user-service/user.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class SignupComponent implements OnInit {
   signUpForm!: FormGroup;
   register: boolean = false;
 
-  constructor(private router: Router, private userService: UserService, private formBuilder: FormBuilder) {}
+  constructor(private router: Router, private userService: UserService, private formBuilder: FormBuilder, private snackbarService: SnackbarService) {}
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
@@ -42,6 +43,7 @@ export class SignupComponent implements OnInit {
       next: (res: any) => {
         console.log('API response:', res);
         this.router.navigate(['/']);
+        this.snackbarService.showMessage('User signed up successfully!');
       },
       error: (err) => {
         console.log('API error:', err);
