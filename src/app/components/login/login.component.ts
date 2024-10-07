@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/services/user-service/user.service';
-
+import {SnackbarService} from 'src/services/snackbar/snackbar.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private snackbarService: SnackbarService
   ) {}
 
   ngOnInit() {
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('name', res?.data?.firstName);
             localStorage.setItem('email', res?.data?.email);
             this.router.navigate(['/notes']);
+            this.snackbarService.showMessage('User logged out successfully!');
           },
           error: (err) => {
             console.log(err);

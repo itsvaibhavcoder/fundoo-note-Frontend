@@ -22,15 +22,19 @@
     </mat-form-field>
     <mat-error *ngIf="submitted && loginControls['password']?.hasError('required')">Password required</mat-error>
     <mat-error *ngIf="submitted && loginControls['password']?.hasError('password')">Incorrect Password</mat-error>
-    <a href="#" class="forgot-password">Forgot Password?</a>
 
-    <div class="button-group">
-      <section>
-        <div class="example-button-row">
-          <button routerLink="/signup" class="create-account" mat-raised-button>Create Account</button>
-          <button (click)="handleLogin()" class="login" mat-raised-button>Login</button>
+    <div class="btn-container">
+      <div class="forget-password">
+        <button>Forget Password</button>
+      </div>
+      <div class="create-account">
+        <div>
+          <button routerLink="/signup">Create Account</button>
         </div>
-      </section>
+        <div class="login">
+          <button (click)="handleLogin()">Login</button>
+        </div>
+      </div>
     </div>
 </form>
 </div>
