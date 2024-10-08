@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { DataService } from 'src/services/data-service/data.service';
 import { NotesService } from 'src/services/notes-service/notes.service';
+import { Note, EventAction, ApiResponse } from 'src/app/Interfaces/note.interface';
 
 @Component({
   selector: 'app-notes-container',
@@ -9,7 +10,7 @@ import { NotesService } from 'src/services/notes-service/notes.service';
   styleUrls: ['./notes-container.component.scss'],
 })
 export class NotesContainerComponent implements OnInit, OnDestroy {
-  notesList: any[] = [];
+  notesList: Note[] = [];
   searchQuery: string = '';
   subscription!: Subscription;
   
@@ -21,7 +22,7 @@ export class NotesContainerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loadNotes();
     this.dataService.curSearchQuery.subscribe({
-      next: (data) => {
+      next: (data: string) => {
         this.searchQuery = data;
       },
     });
@@ -32,7 +33,7 @@ export class NotesContainerComponent implements OnInit, OnDestroy {
     this.notesService.getNotesApiCall('notes').subscribe({
       next: (res: any) => {
         this.notesList = res.data.filter(
-          (note: any) => !note.isArchive && !note.isTrash
+          (note: Note) => !note.isArchive && !note.isTrash
         );
       },
       error: (err) => {
@@ -42,7 +43,7 @@ export class NotesContainerComponent implements OnInit, OnDestroy {
   }
 
   // Handle events coming from child components
-  handleUpdateNotesList($event: { action: string; data: any }) {
+  handleUpdateNotesList($event: EventAction) {
     if ($event.action === 'add') {
       // Add a new note to the list
       this.notesList = [$event.data, ...this.notesList];
@@ -65,7 +66,7 @@ export class NotesContainerComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Unsubscribe from subscriptions
+  //Unsubscribe from subscriptions
   ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
