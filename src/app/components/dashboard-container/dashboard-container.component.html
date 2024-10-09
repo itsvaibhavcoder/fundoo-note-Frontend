@@ -28,7 +28,7 @@
 </mat-drawer-container> -->
 
 
-<app-navbar (toggleDrawer)="toggleDrawer()"></app-navbar>
+ <app-navbar (toggleDrawer)="toggleDrawer()"></app-navbar>
 <mat-drawer-container class="example-container" [hasBackdrop]="false">
   <mat-drawer #drawer [mode]="'side'" [opened]="drawerOpened" class="google-keep-drawer">
     <div class="drawer-item" routerLink="/notes" routerLinkActive="active-link">
@@ -55,4 +55,6 @@
   <mat-drawer-content class="content">
     <router-outlet class="outlet"></router-outlet>
   </mat-drawer-content>
-</mat-drawer-container>
+</mat-drawer-container> 
+
+ 
