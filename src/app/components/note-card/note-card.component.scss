@@ -4,7 +4,7 @@
     border-radius: 8px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    margin: 10px;
+    margin: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -136,4 +136,38 @@
     border: 1px solid #EFEFF1; 
  }
 
-  
+
+ @media screen and (max-width: 767px){
+   .task-main-cnt{
+      width: 126px;
+      padding: 10px;
+      margin: 16px 37px;
+   }
+ }
+
+ @media screen and (min-width: 910px){
+   .task-main-cnt{
+      width: 300px;
+      padding: 20px;
+      margin: 20px;
+      span{
+         padding: 10px;
+         font-size: large;
+      }
+   }
+ }
+
+ @media screen and (max-width: 350px){
+   .task-main-cnt{
+      width: 140px;
+        padding: 8px;
+        margin: 17px 22px;
+   }
+ }
+
+ @media (min-width: 1023px){
+   .task-main-cnt{
+      width: 410px;
+      margin-left: 85px;
+   }
+ }
