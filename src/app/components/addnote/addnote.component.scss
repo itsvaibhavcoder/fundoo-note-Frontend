@@ -173,3 +173,86 @@ mat-icon{
   background-color: #EFEFF1;
   border: 1px solid #EFEFF1; 
 }
+
+
+@media (min-width: 1023px) {
+  .main-cnt {
+    width: 80%;
+    height: 60px;
+    font-size: x-large;
+    border-radius: 12px;
+  }
+
+  .task-main-cnt {
+    width: 90%; 
+  }
+}
+
+@media (max-width: 992px) {
+  .main-cnt {
+    width: 90%;
+    height: 63px;
+    font-size: bold;
+  }
+
+  .task-main-cnt {
+    width: 90%; 
+  }
+}
+
+@media (max-width: 768px) {
+  .main-cnt {
+    width: 90%;
+    flex-direction: row; 
+    align-items: flex-start;
+  }
+
+  .task-main-cnt {
+    width: 90%;
+    margin: 10px 0;
+  }
+
+  .icons-cnt {
+    justify-content: space-around; 
+  }
+
+  textarea {
+    height: 80px;
+  }
+}
+
+@media (max-width: 576px) {
+  .main-cnt {
+    width: 95%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .add-note{
+    padding-top: 0px;
+    padding-left: 0px;
+  }
+  .task-main-cnt {
+    width: 95%;
+    padding: 6px;
+  }
+
+  .color-palate-cnt {
+    width: 100%; 
+    justify-content: space-evenly;
+  }
+
+  .color-btn {
+    width: 25px;
+    height: 25px;
+  }
+
+  button {
+    width: 100%;
+    padding: 0px;
+    font-size: 10px; 
+  }
+
+  textarea {
+    height: 100px; 
+  }
+}
