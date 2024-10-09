@@ -30,7 +30,9 @@ h2 {
     font-size: 20px;
     margin-bottom: 5px;
 }
-
+button.mat-primary {
+    color: white;
+}
 mat-form-field {
     width: 80%;
 }
@@ -58,12 +60,22 @@ p {
     flex-direction: column;
     align-items: center;
     gap: 20px; 
-  }
+}
 
 .forget-password {
-   width: 120px;
-   padding: 0px;
+   width: 130px;
+   border: 0.3px solid gray;
+   border-radius: 5px;
+   margin-right: 117px;
+   background-color: #007bff;
 }
+
+.login{
+   width: 100px;
+   background-color: #007bff;
+   border-radius: 5px;
+}
+
 mat-error{
     margin-top: -10px;
     margin-bottom: 10px;
@@ -71,24 +83,20 @@ mat-error{
 
 
 button {
-    padding: 10px 16px;
-    width: 123px;
     border: none;
-    background-color: #007bff;
-    color: white;
+    color: black;
     cursor: pointer;
-    font-size: 12px;
-    border-radius: 4px;
 }
-button:hover {
-    background-color: #0056b3;
-}
-.create-account {
+
+.button-cnt {
     display: flex;
     justify-content: center;
     gap: 10px; 
 }
-
+.create-account{
+    margin-right: 42px;
+    width: 100px;
+}
 .footer {
     position: absolute;
     top: calc(50% + 230px);
@@ -97,13 +105,13 @@ button:hover {
     transform: translate(-50%, 0);
     display: flex;
     justify-content: space-between;
-    margin-top: -20px;
+    margin-top: -5px;
     box-sizing: border-box;
 }
 
 .language-select select {
-    font-size: 12px;
-    padding: 6px;
+    font-size: 8px;
+    padding: 7px;
 }
 
 .right-links a {

@@ -25,14 +25,17 @@
 
     <div class="btn-container">
       <div class="forget-password">
-        <button>Forget Password</button>
+        <!-- <button>Forget Password</button> -->
+        <button mat-button color="primary">Forget Password</button>
       </div>
-      <div class="create-account">
-        <div>
-          <button routerLink="/signup">Create Account</button>
+      <div class="button-cnt">
+        <div class="create-account">
+          <!-- <button routerLink="/signup">Create Account</button> -->
+          <button routerLink="/signup" mat-button>Create Account</button>
         </div>
         <div class="login">
-          <button (click)="handleLogin()">Login</button>
+          <!-- <button (click)="handleLogin()">Login</button> -->
+          <button (click)="handleLogin()" mat-button color="primary">Login</button>
         </div>
       </div>
     </div>
@@ -41,9 +44,9 @@
 
 <div class="footer">
   <div class="language-select">
-    <select>
+    <!-- <select>
       <option value="en">English (United States)</option>
-    </select>
+    </select> -->
   </div>
   <div class="right-links">
     <a href="#">Help</a>
