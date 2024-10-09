@@ -9,7 +9,7 @@ body{
   height: 59px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   padding: 0 20px;
-  border: 1px solid gray;
+  border-bottom: 1px solid gray;
   width: calc(100vw - 40px);
 }
 
@@ -46,9 +46,9 @@ body{
 }
 
 .mid-cnt {
-  flex-grow: 1;
+  width: 50%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #f2f4f8;
   margin-left: 23px;
@@ -131,8 +131,12 @@ body{
     justify-content: center;
     align-items: center; 
     text-align: center;  
+    border-radius: 5px;
   }
-  
+  .user-detail{
+    display: flex;
+    justify-content: center;
+  }
   .profile-dropdown p {
     margin: 0;
     padding: 5px 0;
@@ -144,6 +148,7 @@ body{
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    border-radius: 5px;
   }
   
   button:hover {
@@ -164,4 +169,158 @@ body{
   font-weight: bold;
   cursor: pointer;
   margin-left: 5px;
+}
+.user{
+  width: 35px;
+  height: 35px;
+  background-color: rgb(101, 101, 226); 
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin-right: 2px;
+  margin-top: 2px;
+}
+@media screen and (min-width: 1023px) {
+  .navbar-main-cnt {
+    padding: 0 10px;
+    height: 90px;
+    width: 97%;
+  }
+
+  .left-cnt h3 {
+    font-size: 16px;
+    margin-left: 8px;
+  }
+
+  .mid-cnt {
+    margin-left: 10px;
+    input {
+      width: 60%;
+      font-size: 14px;
+    }
+  }
+
+  .right-cnt mat-icon, .right-cnt .googleapp {
+    width: 20px;
+    height: 20px;
+  }
+
+  .user-initial {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .profile-dropdown {
+    top: 45px;
+    right: 0;
+  }
+}
+
+/* For mobile devices (e.g., smartphones) */
+@media screen and (max-width: 768px) {
+  .navbar-main-cnt {
+    padding: 0 5px;
+    height: 50px;
+  }
+
+  .left-cnt {
+    h3 {
+      font-size: 14px;
+      margin-left: 5px;
+    }
+
+    .googleKeep {
+      height: 28px;
+    }
+
+    mat-icon {
+      padding: 5px;
+    }
+  }
+
+  .mid-cnt {
+    margin-left: 8px;
+    input {
+      width: 50%;
+      font-size: 12px;
+      padding: 3px;
+    }
+  }
+  .right-cnt{
+    padding: 5px;
+  }
+
+  .right-cnt {
+    mat-icon {
+      padding: 4px;
+      width: 18px;
+      height: 18px;
+    }
+
+    .googleapp {
+      width: 22px;
+      height: 22px;
+    }
+
+    .user-initial {
+      width: 28px;
+      height: 28px;
+      font-size: 14px;
+    }
+  }
+}
+
+/* For very small devices (e.g., extra-small smartphones) */
+@media screen and (max-width: 480px) {
+  .navbar-main-cnt {
+    padding: 0 0px;
+    height: 53px;
+    width: 100%;
+  }
+
+  .left-cnt {
+    h3 {
+      font-size: 12px;
+    }
+
+    .googleKeep {
+      height: 24px;
+    }
+
+    mat-icon {
+      padding: 3px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .mid-cnt {
+    input {
+      width: 45%;
+      font-size: 10px;
+      padding: 2px;
+    }
+  }
+
+  .right-cnt {
+    mat-icon {
+      width: 14px;
+      height: 14px;
+    }
+
+    .googleapp {
+      width: 18px;
+      height: 18px;
+    }
+
+    .user-initial {
+      width: 25px;
+      height: 25px;
+      font-size: 12px;
+    }
+  }
 }

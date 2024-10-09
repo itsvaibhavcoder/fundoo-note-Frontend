@@ -22,7 +22,6 @@ export class NavbarComponent implements OnInit {
     iconRegistry.addSvgIconLiteral('refresh-icon', sanitizer.bypassSecurityTrustHtml(REFRESH_ICON));
     iconRegistry.addSvgIconLiteral('setting-icon', sanitizer.bypassSecurityTrustHtml(SETTING_ICON));
     iconRegistry.addSvgIconLiteral('list-view-icon', sanitizer.bypassSecurityTrustHtml(LIST_VIEW_ICON));
-    
    }
 
   ngOnInit(): void {
@@ -40,5 +39,4 @@ export class NavbarComponent implements OnInit {
   onMenuIconClick(){
     this.toggleDrawer.emit();
   }
-
 }

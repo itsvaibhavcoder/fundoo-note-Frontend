@@ -69,7 +69,10 @@
       <div class="user-initial">{{ userName[0] | uppercase }}</div>
       <div class="profile-dropdown" *ngIf="showProfile">
         <p>Google Account</p>
-        <p>{{ userName }}</p>
+        <div class="user-detail">
+          <div class="user">{{ userName[0] | uppercase }}</div>
+          <p>{{ userName }}</p>
+        </div>
         <p>{{ userEmail }}</p>
         <button (click)="logout()">Logout</button>
       </div>
