@@ -109,3 +109,61 @@ button:hover {
     margin-top: 10px;
   }
   
+  @media (min-width: 361px) and (max-width: 767px) {
+    .image-section {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0px;
+      box-sizing: border-box;
+      margin-left: 10px;
+      margin-bottom: 50px;
+    }
+    .form-section{
+      width: 68%;
+    }
+    .name-fields{
+      margin-left:2px;
+    }
+    .signup-wrapper{
+      width: 360px;
+    }
+    button{
+      margin: 5px;
+    }
+ }
+
+ @media (max-width: 360px){
+  .image-section {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    box-sizing: border-box;
+    margin-left: 10px;
+    margin-bottom: 50px;
+  }
+  .form-section{
+    width: 68%;
+  }
+  .form-footer{
+    width: 68%;
+  }
+  .name-fields{
+    margin-left:2px;
+  }
+  .signup-wrapper{
+    width: 350px;
+    height: 550px;
+  }
+  button{
+    margin: 5px;
+  }
+
+ }
+
+//344 and 360
