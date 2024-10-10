@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { DataService } from 'src/services/data-service/data.service';
 import { NotesService } from 'src/services/notes-service/notes.service';
@@ -42,7 +42,7 @@ export class NotesContainerComponent implements OnInit, OnDestroy {
     });
   }
 
-  // Handle events coming from child components
+  //Handle events coming from child components
   handleUpdateNotesList($event: EventAction) {
     if ($event.action === 'add') {
       // Add a new note to the list
