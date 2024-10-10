@@ -26,7 +26,6 @@ export class AddnoteComponent implements OnInit {
     iconRegistry.addSvgIconLiteral('undo-icon', sanitizer.bypassSecurityTrustHtml(UNDO_ICON));
     iconRegistry.addSvgIconLiteral('redo-icon', sanitizer.bypassSecurityTrustHtml(REDO_ICON));
     iconRegistry.addSvgIconLiteral('pin-icon', sanitizer.bypassSecurityTrustHtml(PIN_ICON));
-    console.log(data);
     if(data){
       this.showTakeNote = false;
       this.title = data.noteDetails.Title,
@@ -39,11 +38,15 @@ export class AddnoteComponent implements OnInit {
   ngOnInit(): void {
   }
   handleNotesIconsClick(action: string, color: string= '#ffffff'){
-    if(action==='color'){
-      console.log(this.data.noteDetails)
-      this.noteDetails.color = color;
-      
-      this.noteService.updateNoteById('notes', this.id, color).subscribe({
+    if(action==='color' || action=='edit'){
+      // console.log(this.data.noteDetails)
+      //this.noteDetails.color = color;
+      //Change here
+      this.noteService.updateNoteById('notes', this.noteDetails._id, {
+        Title: this.title,
+        Description: this.description,
+        color: color
+      }).subscribe({
         next:(res)=>{
           console.log('Color updated', res);
         },
@@ -59,17 +62,22 @@ export class AddnoteComponent implements OnInit {
     
     if (addNote && this.data) {
       this.dialogRef.close({
-        _id: this.data.noteDetails._id,
+        ...this.data.noteDetails,
         Title: this.title,
         Description: this.description,
-        color: this.color 
+        color: this.color
+        // _id: this.data.noteDetails._id,
+        // Title: this.title,
+        // Description: this.description,
+        // color: this.color 
       });
     }
   
     if (addNote && !this.data) {
       this.noteService.createNoteApiCall("notes", {
         Title: this.title,
-        Description: this.description
+        Description: this.description,
+        color:this.color
       }).subscribe({
         next: (data: any) => {
           this.updateList.emit({ action: "add", data: data?.data });
@@ -79,9 +87,12 @@ export class AddnoteComponent implements OnInit {
         }
       });
     }
+    this.title = ""
+    this.description = ""
+    console.log(this.title);
+    console.log(this.description);
   }
   
 }
-
 
 
