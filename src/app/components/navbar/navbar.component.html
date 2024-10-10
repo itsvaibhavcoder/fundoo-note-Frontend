@@ -57,7 +57,9 @@
       aria-label="settings icon"
       matTooltip="Settings"
       matTooltipPosition="below"
+    [matMenuTriggerFor]="moreMenu"
     ></mat-icon>
+    
 
     <img class="googleapp" src="../../../assets/googlapp.png" alt="googleapp" />
 
@@ -79,3 +81,19 @@
     </div>
   </div>
 </div>
+
+
+
+<mat-menu #moreMenu="matMenu">
+  <button mat-menu-item>
+    <span>Change Theme</span>
+  </button>
+  <button mat-menu-item>
+    <span>Send Feedback</span>
+  </button>
+  <button mat-menu-item>
+    <span>Help</span>
+  </button>
+</mat-menu>
+
+<!-- [matMenuTriggerFor]="moreMenu" -->
