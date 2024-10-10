@@ -89,7 +89,8 @@ export class NoteCardComponent implements OnInit {
             console.log('Error archiving note:', err);
           },
         });
-    } else if (action === 'trash' || action === 'restore') {
+    } 
+    else if (action === 'trash' || action === 'restore') {
       this.notesService
         .trashNoteById('notes', this.noteDetails._id)
         .subscribe({
@@ -115,38 +116,34 @@ export class NoteCardComponent implements OnInit {
     }
     this.updateList.emit({ action, data: this.noteDetails });
   } 
+
   handleEditNote() {
     const dialogRef = this.dialog.open(AddnoteComponent, {
       data: {
         noteDetails: this.noteDetails
       },
     });
-  
-    dialogRef.afterClosed().subscribe({
-      next: (res) => {
-        if (res) {
-          if (res._id) {
-            const updatePayload = {
-              Title: res.Title,
-              Description: res.Description,
-              color: res.color  
-            };
 
-            this.notesService.updateNoteById('notes', res._id, updatePayload).subscribe({
-              next: (updatedNote) => {
-                console.log('Note updated:', updatedNote);
-                this.updateList.emit({ action: 'edit', data: updatedNote });
-              },
-              error: (err) => {
-                console.error('Error updating note:', err);
-              }
-            });
-          } 
-          else {
-            console.error('Error: Note ID is missing');
+  dialogRef.afterClosed().subscribe({
+    next: (res: any) => {
+      if (res) {
+        const noteId = res._id;
+        const {isArchive, isTrash, _id, createdAt,updatedAt, __v, ...allowedNotesDetails} = res;
+        this.noteDetails = allowedNotesDetails;
+        this.notesService.updateNoteById('notes', noteId, this.noteDetails).subscribe({
+          next: (updateRes) => {
+            console.log('Note updated successfully:', updateRes);
+            this.updateList.emit({ action: 'edit', data: this.noteDetails });
+          },
+          error: (err) => {
+            console.error('Error updating note:', err);
           }
-        }
+        });
       }
-    });
+    },
+    error: (err) => {
+      console.error('Dialog closed with error:', err);
+    }
+  });
   }
 }
