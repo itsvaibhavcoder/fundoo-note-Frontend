@@ -1,4 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+:root {
+    --background-color: white;
+    --text-color: black;
+    --primary-color: #3f51b5;
+  }
+  
+ 
+  .dark-theme {
+    --background-color: #121212;
+    --text-color: white;
+    --primary-color: #bb86fc;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  button {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+  }
+  
